@@ -1,16 +1,22 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from my_note.note import Note
+from my_note.provider import Provider, JsonProvider, CsvProvider
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+class Program:
+    provider: Provider
+
+    def __init__(self):
+        self.__load_provider()
+
+    def __load_provider(self):
+        self.provider = JsonProvider()
+        print(self.provider.read())
+
+    def run(self):
+        my_note = Note("test", "this a test note")
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    program = Program()
+    program.run()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
